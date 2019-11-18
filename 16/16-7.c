@@ -13,7 +13,9 @@ double *new_d_array(int n, ...) {
     double *p;
     int i;
     va_list ap;
-    p = malloc(n * sizeof(double));
+    p = (double *)malloc(n * sizeof(double));
+    if (p == NULL)
+        exit(EXIT_FAILURE);
     va_start(ap, n);
     for (i = 0; i < n; i++)
         *(p + i) = va_arg(ap, double);
